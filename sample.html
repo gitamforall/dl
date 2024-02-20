@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samples</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    z-index: 1;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px; /* Adjust the spacing here */
+    transition: background-color 0.5s;
+  }
+  .dot.active {
+    background-color: rgb(13, 239, 62);
+    box-shadow: 0 0 5px rgb(101, 231, 86);
+  }
+  .giraffe-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .giraffe-section img {
+    width: 0;
+    opacity: 0;
+    transition: width 0.5s, opacity 0.5s;
+  }
+  .giraffe-section img.active {
+    width: 300px; /* Adjust the width of the images */
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+<div class="giraffe-section">
+    <img src="frontAP03120240001273.jpg" alt="front dl">
+    <img src="RC_PVC_AP04AK9396.jpg" alt="rc front">
+    <img src="RC DOWNLOAD __ AP40AN6065__page-0002 copy.jpg" alt="rc back">
+    <img src="backAP03120240001273.jpg" alt="back dl">
+
+</div>
+<script>
+  const dots = document.querySelectorAll('.dot');
+  const giraffeImages = document.querySelectorAll('.giraffe-section img');
+
+  let currentIndex = 0;
+
+  setInterval(() => {
+    currentIndex++;
+    if (currentIndex >= dots.length) {
+      currentIndex = 0;
+    }
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+
+    giraffeImages.forEach((img, index) => {
+      setTimeout(() => {
+        img.classList.toggle('active', index === currentIndex);
+      }, index * 1000); // Delay each image by 500ms
+    });
+  }, 2000); // Change dot every 2 seconds
+</script>
+</body>
+</html>
